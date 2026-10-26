@@ -1,0 +1,203 @@
+site_name: AI Builder Playbook
+site_description: "How to build software with AI as a team: harnesses that carry your working agreements, workflows that move from intent to measured outcome, and software factories that grow without losing judgment."
+site_author: "Iván González Sáiz"
+site_url: "https://dreamingecho.es/playbooks/ai-builder/"
+repo_name: dreamingechoes/ai-builder-playbook
+repo_url: https://github.com/dreamingechoes/ai-builder-playbook
+
+nav:
+  - Home: index.md
+  - Principles:
+      - Start Here: principles/start-here.md
+      - Overview: principles/index.md
+      - Core Principles: principles/core-principles.md
+      - The State of the Evidence: principles/state-of-the-evidence.md
+      - Glossary: principles/glossary.md
+  - Foundations:
+      - Overview: foundations/index.md
+      - How a Coding Agent Works: foundations/how-a-coding-agent-works.md
+      - Context Engineering: foundations/context-engineering.md
+      - Instructions & AGENTS.md: foundations/instructions-and-agents-md.md
+      - Skills: foundations/skills.md
+      - Tools & MCP: foundations/tools-and-mcp.md
+      - Subagents & Orchestration: foundations/subagents-and-orchestration.md
+      - Hooks & Deterministic Guards: foundations/hooks-and-guards.md
+  - AI Harness:
+      - Overview: harness/index.md
+      - What a Harness Is: harness/what-a-harness-is.md
+      - Designing a Team Harness: harness/designing-a-team-harness.md
+      - Guides & Sensors: harness/guides-and-sensors.md
+      - Human Gates: harness/human-gates.md
+      - Memory & Continuity: harness/memory-and-continuity.md
+      - Testing & Evolving the Harness: harness/testing-and-evolving.md
+      - Harnessability: harness/harnessability.md
+      - Ownership & Change: harness/ownership-and-change.md
+  - Workflow:
+      - Overview: workflow/index.md
+      - Intent Before Code: workflow/intent-before-code.md
+      - Research & Planning: workflow/research-and-planning.md
+      - Building with Agents: workflow/building-with-agents.md
+      - Verification: workflow/verification.md
+      - Review at Agent Speed: workflow/review-at-agent-speed.md
+      - Rollout & Learning: workflow/rollout-and-learning.md
+  - Software Factories:
+      - Overview: factories/index.md
+      - What a Factory Is (and Isn't): factories/what-a-factory-is.md
+      - The Bottleneck Moves: factories/the-bottleneck-moves.md
+      - Risk Tiers & Autonomy: factories/risk-tiers-and-autonomy.md
+      - Your First Factory Workflow: factories/first-factory-workflow.md
+      - Factory Infrastructure: factories/factory-infrastructure.md
+      - Field Reports: factories/field-reports.md
+  - Team:
+      - Overview: team/index.md
+      - Measuring Impact Honestly: team/measuring-impact.md
+      - Adoption Without Mandates: team/adoption-without-mandates.md
+      - Roles & the Shape of Work: team/roles-and-the-shape-of-work.md
+      - Growing Judgment: team/growing-judgment.md
+      - Human Latency & Sustainable Intensity: team/human-latency.md
+      - Cost & Token Economics: team/cost-and-token-economics.md
+  - Security:
+      - Overview: security/index.md
+      - Agent Threat Model: security/agent-threat-model.md
+      - Sandboxing & Permissions: security/sandboxing-and-permissions.md
+      - Data & Policy: security/data-and-policy.md
+      - Accountability & Audit Trail: security/accountability-and-audit.md
+  - Frontier:
+      - Overview: frontier/index.md
+      - Beyond Code: frontier/beyond-code.md
+      - Migrations at Scale: frontier/migrations-at-scale.md
+      - Personal Knowledge Systems: frontier/personal-knowledge-systems.md
+      - Experiments in the Field: frontier/experiments-in-the-field.md
+      - What Comes Next: frontier/what-comes-next.md
+  - Tools:
+      - Overview: tools/index.md
+      - Landscape by Category: tools/landscape.md
+      - Evaluating a Tool on Your Own Work: tools/evaluating-tools.md
+      - Portability: tools/portability.md
+      - My Stack: tools/my-stack.md
+  - Templates:
+      - Overview: templates/index.md
+      - Harness Brief: templates/harness-brief.md
+      - AGENTS.md Skeleton: templates/agents-md-skeleton.md
+      - Skill Template: templates/skill-template.md
+      - Human Gate Definition: templates/human-gate-definition.md
+      - Risk Tier Matrix: templates/risk-tier-matrix.md
+      - Factory Pilot Canvas: templates/factory-pilot-canvas.md
+      - Impact Review: templates/impact-review.md
+      - Agent Incident Postmortem: templates/agent-incident-postmortem.md
+      - Tool Scorecard: templates/tool-scorecard.md
+      - Harness Change Record: templates/harness-change-record.md
+
+docs_dir: docs
+site_dir: site
+use_directory_urls: true
+
+# MkDocs excludes a top-level templates/ directory by default (it assumes theme
+# templates). Here it holds playbook content, so it is re-included explicitly.
+exclude_docs: |
+  !templates/
+
+theme:
+  name: material
+  language: en
+  custom_dir: src/overrides
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - navigation.footer
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - toc.follow
+    - content.tabs.link
+    - content.code.copy
+    - footer.social
+  logo: assets/logo.svg
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: deep purple
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font:
+    text: "Roboto"
+    code: "Roboto Mono"
+  favicon: assets/favicon.png
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.progressbar
+  - pymdownx.saneheaders
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - meta
+
+plugins:
+  - search:
+      separator: '[\s\-\.]+'
+      lang: en
+  - social:
+      cards_layout_options:
+        background_color: "#673ab7"
+        color: "#ffffff"
+  - minify:
+      minify_html: true
+
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+
+extra:
+  social:
+    - icon: material/web
+      link: https://dreamingecho.es
+      name: Website
+    - icon: fontawesome/brands/github
+      link: https://github.com/dreamingechoes
+      name: GitHub
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/dreamingechoes.bsky.social
+      name: Bluesky
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/ivan-gonzalez-saiz
+      name: LinkedIn
+  generator: false
+
+copyright: Copyright &copy; 2026 Iván González Sáiz

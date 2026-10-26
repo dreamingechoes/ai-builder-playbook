@@ -1,0 +1,80 @@
+{% extends "base.html" %} {% block extrahead %} {{ super() }}
+<link rel="stylesheet" href="{{ 'assets/stylesheets/custom.css' | url }}" />
+<script>
+  (function () {
+    // Works locally, at the configured production URL, and at the legacy alias.
+    var configuredHomePath = new URL('{{ config.site_url }}').pathname;
+    var homePaths = [
+      '/',
+      configuredHomePath,
+      configuredHomePath.replace(/\/$/, ''),
+      '/ai-builder-playbook/',
+      '/ai-builder-playbook',
+    ];
+
+    function setHomeClass(isHome) {
+      if (document.body) {
+        document.documentElement.classList.toggle('aibp-home', isHome);
+        document.body.classList.toggle('aibp-home', isHome);
+      }
+    }
+
+    function isHomePath(path) {
+      return homePaths.indexOf(path) !== -1;
+    }
+
+    function updateBasedOnPath() {
+      setHomeClass(isHomePath(window.location.pathname));
+    }
+
+    function init() {
+      updateBasedOnPath();
+
+      window.addEventListener('popstate', updateBasedOnPath);
+
+      var originalPushState = history.pushState;
+      history.pushState = function () {
+        originalPushState.apply(this, arguments);
+        updateBasedOnPath();
+      };
+
+      var originalReplaceState = history.replaceState;
+      history.replaceState = function () {
+        originalReplaceState.apply(this, arguments);
+        updateBasedOnPath();
+      };
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+{% endblock %} {% block content %} {% if page and page.is_homepage %} {% set primary_page =
+page.next_page if page.next_page else nav|first %}
+<section class="aibp-hero md-typeset">
+  <div class="aibp-hero__content">
+    <h1 class="aibp-hero__title">{{ config.site_name }}</h1>
+    <p class="aibp-hero__subtitle">{{ config.site_description }}</p>
+    <div class="aibp-hero__actions">
+      {% if primary_page %}
+      <a class="md-button md-button--primary" href="{{ primary_page.url | url }}"
+        >Explore the playbook</a
+      >
+      {% endif %} {% if config.repo_url %}
+      <a
+        class="md-button md-button--white"
+        href="{{ config.repo_url }}"
+        target="_blank"
+        rel="noopener"
+        >View on GitHub</a
+      >
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% if page.content %}
+<div class="aibp-home-body md-typeset">{{ page.content }}</div>
+{% endif %} {% else %} {{ super() }} {% endif %} {% endblock %}
