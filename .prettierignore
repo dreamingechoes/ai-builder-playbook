@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+.venv/
+
+# Build outputs
+site/
+dist/
+build/
+.cache/
+.next/
+
+# Vendor files
+vendor/
+
+# Generated files
+*.pdf
+
+# IDE/Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Lock files (don't format)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Markdown files (use markdownlint instead - Prettier breaks MkDocs admonitions)
+docs/**/*.md
+*.md
+
+# MkDocs theme overrides (Jinja2 templates)
+src/overrides/

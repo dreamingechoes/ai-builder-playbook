@@ -1,0 +1,44 @@
+{
+  "name": "ai-builder-playbook",
+  "version": "1.0.0",
+  "description": "How to build software with AI as a team: harnesses, workflows, software factories, measurement, and the judgment that stays human.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0",
+    "lint": "npm run lint:md && npm run lint:format",
+    "lint:md": "markdownlint-cli2 \"**/*.md\"",
+    "lint:md:fix": "markdownlint-cli2 \"**/*.md\" --fix",
+    "lint:format": "prettier --check .",
+    "format": "prettier --write .",
+    "build": "mkdocs build",
+    "serve": "mkdocs serve",
+    "deploy": "mkdocs gh-deploy --force"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dreamingechoes/ai-builder-playbook.git"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "harness-engineering",
+    "software-factory",
+    "agentic-engineering",
+    "playbook",
+    "mkdocs"
+  ],
+  "author": "Iván González Sáiz <hi@dreamingecho.es>",
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dreamingechoes/ai-builder-playbook/issues"
+  },
+  "homepage": "https://github.com/dreamingechoes/ai-builder-playbook#readme",
+  "devDependencies": {
+    "markdownlint-cli2": "^0.18.1",
+    "prettier": "^3.8.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
